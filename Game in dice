@@ -1,0 +1,72 @@
+# игра в кости 
+# So-so code
+import random
+        
+def throwing_the_dice(*args): 
+    while pl1 != 1:
+        pl1 = int(input('нажмите 1 чтобы бросить кости\n'))
+    if pl1 == 1:
+        one_player_num = [random.randint(1,6), random.randint(1,6)]
+        print(one_player_num)
+    return(one_player_num)
+
+def throwing_the_dice_2(*args): 
+    while pl2 != 2:
+        pl2 = int(input('нажмите 2 чтобы бросить кости\n'))
+    if pl2 == 2:
+        two_player_num = [random.randint(1,6), random.randint(1,6)]
+        print(two_player_num)
+    return(two_player_num)
+
+def comparison(one_player_num, two_player_num):
+    if one_player_num > two_player_num:
+        print(f'{name_pl1} выйграл')
+        print(f'{one_player_num} > {two_player_num}')
+    elif one_player_num < two_player_num:
+        print(f'{name_pl2} выйграл')
+        print(f'{one_player_num} < {two_player_num}')
+
+
+print('''\nЗдравствуйте, вас приветствует игра "кости"!\n
+правила таковы:
+1) Два игрока кидают по 2 кости.
+2) Тот у кого сумма выпавших чисел больше победил.\n''')
+
+number_of_players = int(input('''Выберите режим
+Игра с другом или с компьютером?
+Нажмите 1 или 2 соответственно.\n'''))
+
+while number_of_players != 1 and number_of_players != 2:
+   number_of_players = int(input('''Кажется, что вы ввели число, которое не соответсвует ни оному из режимов. 
+Повторите попытку ещё раз.\n'''))
+ 
+if number_of_players == 1:
+    print('|РEЖEМ: ИГРА С ДРУГОМ|\n')
+
+    name_pl1 = input('Первый игрок, введите своё имя\n')
+    name_pl2 = input('Второй игрок, введите своё имя\n')
+    
+    pl1 = int(input(f'{name_pl1}, нажмите 1 для того чтобы бросить кости.\n'))
+    one_player_num = throwing_the_dice(pl1)
+
+    pl2 = int(input(f'{name_pl2}, нажмите 2 для того чтобы бросить кости.\n'))
+    two_player_num = throwing_the_dice_2(pl2)
+
+    comparison(one_player_num,two_player_num)
+
+elif number_of_players == 2:
+    print('|РЕЖИМ: ИГРА C КОМПЬЮТЕРОМ|\n')
+    
+    pl1 = int(input('Нажмите 1 для того чтобы бросить кости.\n'))
+
+    name_pl1 = input('Первый игрок, введите своё имя\n')
+    name_pl2 = 'Компьютер'
+    
+    while pl1 != 1:
+        pl1 = int(input('''Кажется, что вы ввели число, кторое не соответсвует ни оному из режимов. 
+Повторите попытку ещё раз.\n'''))
+    one_player_num = throwing_the_dice(pl1)
+
+    two_player_num = [random.randint(1,6), random.randint(1,6)]
+
+    comparison(one_player_num, two_player_num)
